@@ -6,7 +6,7 @@
 
 ## Installation
 
-Pre-built executables are available in the [releases](https://github.com/p5nbTgip0r/twitch-nightscout/releases/latest) on GitHub. Extract the file anywhere you want, but keep in mind that a configuration file will be generated in the directory of the program. 
+Pre-built executables are available in the [releases](https://github.com/p5nbTgip0r/twitch-nightscout/releases/latest) on GitHub. Place the executable file anywhere you want, but keep in mind that a configuration file will be generated in the directory of the program. 
 
 Alternatively, if you have Go installed, you can build the program from source:
 ```bash
