@@ -1,0 +1,68 @@
+# Twitch login details for the bot
+twitch:
+  # Username of the bot. This will usually be your Twitch username
+  username: my_twitch_username
+  # OAuth token for the bot.
+  # You can obtain this from https://twitchapps.com/tmi/
+  oauth: oauth:us7zs9tgcag7qh39g9ohvktucksg2d
+
+# List of channels which the bot should work under.
+channels:
+  # Your channel name goes here
+  my_twitch_username:
+    nightscout:
+      # Your Nightscout URL
+      url: https://your-nightscout.herokuapp.com/
+      # Token is optional if your Nightscout is public
+      # token: yourtoken-1111111111111111
+
+    # Customization of the bot
+    options:
+      # The keywords which should execute the Nightscout command
+      aliases: [ "!ns", "!bg", "!glucose" ]
+
+      # The format to use for the Nightscout command response
+      # ${PLACEHOLDER_NAME} is replaced by the value of PLACEHOLDER_NAME
+      #
+      # Available placeholders:
+      # BG_MGDL = Glucose value in mg/dL
+      # BG_MMOL = Glucose value in mmol/L
+      # DELTA_MGDL = Change in glucose from the previous reading in mg/dL
+      # DELTA_MMOL = Change in glucose from the previous reading in mmol/L
+      # IOB = Insulin-on-board
+      # COB = Carbs-on-board
+      # DIRECTION_NAME = BG direction name: "FortyFiveUp"
+      # DIRECTION_ARROW = BG direction arrow/symbol: "↗"
+      # TIMESTAMP_LOCAL = Timestamp in local time formatted as HH:mm
+      # TIMESTAMP_UTC = Timestamp in UTC formatted as HH:mm
+      # RELATIVE_TIMESTAMP = Timestamp represented relative to now: "2 minutes ago"
+      response_format: "${DIRECTION_ARROW} ${BG_MGDL} mg/dL (${DELTA_MGDL}) | ${BG_MMOL} mmol/L (${DELTA_MMOL}) =-=-= with ${IOB} IOB and ${COB} COB (${RELATIVE_TIMESTAMP})"
+
+# Multiple channels can be added
+#  my_other_twitch_channel:
+#    nightscout:
+#      url: https://your-nightscout.herokuapp.com/
+#      # token: yourtoken-1111111111111111
+#    options:
+#      aliases: [ "!ns", "!bg", "!glucose" ]
+#      response_format: "${DIRECTION_ARROW} ${BG_MGDL} mg/dL (${DELTA_MGDL}) | ${BG_MMOL} mmol/L (${DELTA_MMOL}) =-=-= with ${IOB} IOB and ${COB} COB (${RELATIVE_TIMESTAMP})"
+
+log:
+  # Possible values:
+  # trace, debug, info, warn, error, fatal, panic
+  level: info
+  console:
+    # Console logging toggle
+    enable: true
+
+  file:
+    # File logging toggle
+    enable: true
+    # File to write logs to
+    filename: bot.log
+    # Maximum filesize in megabytes of a log before rotation
+    max_size: 1
+    # Maximum number of log files to keep
+    max_files: 3
+    # Maximum age of log files in days
+    max_age: 7
