@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/goccy/go-yaml"
 	"os"
+	"strings"
 	"twitch-nightscout/config/schema"
 	"twitch-nightscout/nightscout"
 )
@@ -16,13 +17,20 @@ func ReadConfig(data []byte) (*schema.ConfigFile, error) {
 		return nil, err
 	}
 
+	// used for converting channel names to lowercase
+	replacement := make(map[string]*schema.Channel)
+
 	for channel, chobj := range config.Channels {
 		inst, err := nightscout.GetInstance(chobj.Nightscout.Url, chobj.Nightscout.Token)
 		if err != nil {
 			return nil, fmt.Errorf("could not parse NS URL for channel '%s': %w", channel, err)
 		}
 		chobj.NightscoutInstance = inst
+
+		replacement[strings.ToLower(channel)] = chobj
 	}
+
+	config.Channels = replacement
 
 	return &config, nil
 }

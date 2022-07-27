@@ -46,7 +46,7 @@ func handleMessage(message twitch.PrivateMessage) {
 		Str("message_author", message.User.Name).
 		Str("message", message.Message).
 		Msg("Received Twitch message")
-	channel := cfg.Channels[message.Channel]
+	channel := cfg.Channels[strings.ToLower(message.Channel)]
 	if channel == nil {
 		return
 	}
