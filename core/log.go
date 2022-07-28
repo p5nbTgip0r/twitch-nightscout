@@ -30,11 +30,12 @@ func LoggingInitialize(cfg *schema.Log) {
 		log.Panic().Msgf("Invalid log level '%s'", cfg.Level)
 	}
 
+	zerolog.TimeFieldFormat = "2006-01-02 15:04:05 -0700"
+
 	multi := io.MultiWriter(writers...)
 	log.Logger = zerolog.New(multi).
 		With().
 		Timestamp().
-		Str(zerolog.TimestampFieldName, "2006-01-02 15:04:05 -0700").
 		Logger().
 		Level(level)
 }
