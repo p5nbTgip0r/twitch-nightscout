@@ -54,6 +54,8 @@ log:
   console:
     # Console logging toggle
     enable: true
+    # Log to console in JSON
+    json: false
 
   file:
     # File logging toggle

@@ -8,6 +8,7 @@ type Log struct {
 
 type ConsoleLogging struct {
 	Enable bool `json:"enable"`
+	Json   bool `json:"json"`
 }
 
 type FileLogging struct {

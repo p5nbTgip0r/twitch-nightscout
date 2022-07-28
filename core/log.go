@@ -13,7 +13,11 @@ func LoggingInitialize(cfg *schema.Log) {
 	var writers []io.Writer
 
 	if cfg.Console.Enable {
-		writers = append(writers, zerolog.ConsoleWriter{Out: os.Stderr})
+		if cfg.Console.Json {
+			writers = append(writers, os.Stderr)
+		} else {
+			writers = append(writers, zerolog.ConsoleWriter{Out: os.Stderr})
+		}
 	}
 
 	if cfg.File.Enable {
