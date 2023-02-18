@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"github.com/rs/zerolog/log"
-	"io/ioutil"
 	"os"
 	"twitch-nightscout/bot"
 	"twitch-nightscout/config"
@@ -14,7 +13,7 @@ func main() {
 	var configPath string
 	flag.StringVar(&configPath, "config", "config.yaml", "config file")
 
-	data, err := ioutil.ReadFile(configPath)
+	data, err := os.ReadFile(configPath)
 	if os.IsNotExist(err) {
 		wrote, err := config.WriteExampleConfig(configPath)
 		switch {
