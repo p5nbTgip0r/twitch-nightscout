@@ -3,7 +3,7 @@ package bot
 import (
 	"errors"
 	"fmt"
-	"github.com/gempir/go-twitch-irc/v3"
+	"github.com/gempir/go-twitch-irc/v4"
 	"github.com/rs/zerolog/log"
 	"strings"
 	"twitch-nightscout/config/schema"
